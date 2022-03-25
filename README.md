@@ -1,13 +1,22 @@
 # Caso2-AA
 
-Quicksort logarítmico
+-Quicksort logarítmico
+El quicksort logaritmico sucede cuando utilizamos el pivote con la media del array, es decir, determinamos que el pivote sea el elemento central del array, tomando el primero, el segundo y el ultimo elemento para compararlos y así determinar cual será el pivote según su valor. Si lo hacemos de esta manera, obtenemos una partición óptima para la ordenación de los elementos posteriormente, situación que se nota al enviar arrays con una cantidad de elementos bastante grande; el tiempo no incrementa demasiado ni se ve un cambio muy notable a pesar de que se trabaja con entradas grandes, sino que se puede observar que los resultados se obtienen rápido.
 
-Quicksort cuadrático
+-Quicksort cuadrático
+El quicksort cuadrático sucede cuando utilizamos el pivote de manera aleatoria, puesto que no sabemos cual número será el elegido para ser nuestro pivote, ni la partición que se obtendrá. Con base a los resultados obtenidos, se puede observar que cuando son entradas con muchos elementos tarda mucho más tiempo del normal, además, varía dependiendo del array, ya que como dije anteriormente no sabemos en que posición quedará nuestro pivote. 
 
-Influencia del pivote fijo y aleatorio
+-Influencia del pivote fijo y aleatorio
+El pivote que elijamos afecta directamente al crecimiento y eficiencia del algoritmo, si elegimos un pivote aleatorio, al no requerir ningun calculo extra, puede ser bastante rápido, no obstante, como estamos eligiendo uno al azar, provoca que el algoritmo tenga un orden de O(n²) para ciertos cambios de elementos en el array, además por el hecho de que del lado izquierdo pueden quedar más elementos que del lado derecho. Un ejemplo que me sucedió fue que de un lado me quedaron 2 elementos, lado donde quedó el pivote, mientras que del otro me quedaron 8.
 
-Insertion sort lineal
+Ahora bien, si se elige un pivote fijo, una buena opción que yo utilicé fue el determinar el pivote como el elemento central, para que de cada lado me quedaran la misma cantidad de objetos y que el numero de comparaciones fuera menor, si se hace de esta manera el tiempo es menor y obtenemos un orden de O(n*log (n)). Sin embargo, una desventaja es que se debe hacer el cálculo de ese elemento central como adicional al algoritmo del quicksort, lo cual nos puede reducir un poco de eficiencia al ejecutar el programa. 
 
-Insertion sort cuadrático
+-Insertion sort lineal
+En el caso del insertionSort, actuaba de manera lineal si se enviaban los arrays previamente ordenados u ordenados levemente, que no se involucrará entrar en el while, sino sólo pasar por el for una n cantidad de veces, puesto que no se debía desplazar ningun elemento de lugar, solamente se iban recorriendo los numeros revisando si estaban en el lugar correcto. Como datos de entrada, le envié arrays cada vez más grandes y pude visualizar que el crecimiento siempre iba aumentando conforme los datos de entrada eran cada vez más grandes. Como dato a recalcar noté que si enviaba un array ordenado, como no se debían hacer movimientos, el tiempo de ejecución es muy rápido, tanto así que cuando aparece el resultado de los segundos es 0.
 
-Lograr un freetext search en tiempo logarítmico o linealSe recomienda usar un texto de mínimo 10MB
+-Insertion sort cuadrático
+El insertion sort actuaba de manera cuadratica si el array estaba desordenado, si estaba ordenado de manera decreciente y yo deseaba ordenarlo de manera creciente, puesto que el while se ejecuta n veces, el for actua de 2 a N veces, puesto que en las pasadas de 2 a N se va a cumplir que los elementos 1 a N estén ordenados. El tiempo de ejecución aquí se duplicaba, no seguía una linea de crecimiento recta, sino que conforme enviaba entradas más grandes, el algoritmo debía examinar más datos, ejecutar mayor cantidad de veces el while interno y por eso se veía una diferencia bastante considerable de una entrada de datos, por ejemplo de 1000 elementos a uno de 2000 elementos.
+
+- Lograr un freetext search en tiempo logarítmico o lineal. Se recomienda usar un texto de mínimo 10MB
+Para el freeText Search utilice el algoritmo Rabin Karp, lo más optimizado que se logra hacer es en O(m+n) ya que toma 
+un tiempo lineal 0(n) el paso del rolling hash, el cual precalcula todos los hashes posibles en el string dado, y cuando se encuentra una coincidencia debe revisar cada m letra en la palabra. Noté que conforme el archivo era más extenso generaba más tiempo de ejecución, además de que en caso de que hubiesen colisiones el tiempo se transformaba en un O(mn). No utilicé árboles de ningún tipo (binarios, AVL, BTree) para guardar el archivo, sino que solamente abrí el archivo, agregué todo su texto a un array y de ahí lo envié directamente al algoritmo de Rabin Karp. No obstante, el guardar el archivo en un árbol mejoraría su eficiencia y se tendría mayor orden cuando se desee buscar las coincidencias de strings.
